@@ -1,5 +1,8 @@
 package com.ipiecoles.java.java220;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+
 public class Main{
     public static void main(String[] args){
 //        String chaineNonInitialisee = null;
@@ -23,6 +26,16 @@ public class Main{
 //            System.out.println(chaine);
 //        }
         //System.out.println("Hello world !");
-        System.out.println(Entreprise.NB_CONGES_BASE);
+        Entreprise uneEntreprise = new Entreprise();
+        //Double test = uneEntreprise.primeAnnuelleBase();
+        //System.out.println(test);
+        LocalDate dateTime = new LocalDate(0L);
+        //Commercial commercial1 = new Commercial("nom","prenom", "matricule",dateTime,1500d,15005d);
+        //Commercial commercial2 = new Commercial("nom","prenom", "matricule",dateTime,1500d,500d);
+        //System.out.println(commercial1.getPrimeAnnuelle());
+
+        Technicien unTech = new Technicien();
+        unTech.setGrade(1);
+        unTech.setSalaire(1000d);
     }
 }

@@ -1,6 +1,6 @@
 package com.ipiecoles.java.java220;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 
 public class Entreprise {
 
@@ -12,8 +12,13 @@ public class Entreprise {
     public static final Double PRIME_MANAGER_PAR_TECHNICIEN = 250.0;
     public static final Double PRIME_ANCIENNETE = 100d;
 
-//    public static double primeAnnuelleBase(){
-//        int annee =  LocalDate.now().getYear();
-//        return annee/2;
+    public static Double primeAnnuelleBase(){
+        //le d après le 2 permet de spécifié que c'est un double
+        return LocalDate.now().getYear() / 2d;//*0.5 ou / 2.0
+    }
+
+//    //Nécessaire de mettre static comme ça pas nécéssaire d'instancié une entreprise pour pouvoir appelé getNbConges()
+//    public static Integer getNbConges(){
+//        return NB_CONGES_BASE;
 //    }
 }
