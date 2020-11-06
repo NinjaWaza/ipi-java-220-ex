@@ -3,6 +3,9 @@ package com.ipiecoles.java.java220;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
+import java.util.HashSet;
+import java.util.List;
+
 public class Main{
     public static void main(String[] args){
 //        String chaineNonInitialisee = null;
@@ -37,5 +40,19 @@ public class Main{
         Technicien unTech = new Technicien();
         unTech.setGrade(1);
         unTech.setSalaire(1000d);
+
+        Manager unManager = new Manager();
+        Technicien techUn = new Technicien("techUn" ,  "prenomTechUn",  "matricule",  LocalDate.now(),  1500d,1);
+        Technicien techDeux = new Technicien("techDeux" ,  "prenomTechDeux",  "matricule",  LocalDate.now(),  1500d,2);
+        Technicien techTrois = new Technicien("techTrois" ,  "prenomTechTrois",  "matricule",  LocalDate.now(),  1500d,3);
+
+        unManager.ajoutTechnicienEquipe(techUn);
+        unManager.ajoutTechnicienEquipe(techDeux);
+        unManager.ajoutTechnicienEquipe(techTrois);
+
+        for (Technicien unTechDansLaList : unManager.equipeParGrade()){
+            System.out.println(unTechDansLaList.toString());
+        }
+
     }
 }

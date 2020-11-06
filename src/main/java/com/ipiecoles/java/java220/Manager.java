@@ -2,11 +2,12 @@ package com.ipiecoles.java.java220;
 
 import org.joda.time.LocalDate;
 
-import java.util.HashSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Manager extends Employe {
     //Attributs
-    private HashSet<Technicien> equipe;
+    private HashSet<Technicien> equipe = new HashSet<>();
 
     //Constructeur
     public Manager(){
@@ -39,10 +40,15 @@ public class Manager extends Employe {
         }
     }
 
-    public HashSet<Technicien> equipeParGrade(){
-        HashSet<Technicien> laList = new HashSet<>();
+    public List<Technicien> equipeParGrade(){
+        List<Technicien> laList = new ArrayList<>();
+        for (Technicien unTech : this.equipe){
+            laList.add(unTech);
+        }
+        laList.stream().sorted(Comparator.comparing(Technicien::getNom));
         return laList;
     }
+
 
     @Override
     public void augmenterSalaire(Double pourcentage) {
@@ -52,7 +58,7 @@ public class Manager extends Employe {
 
     //Getter/Setter
     public HashSet<Technicien> getEquipe() {
-        return equipe;
+        return this.equipe;
     }
 
     public void setEquipe(HashSet<Technicien> equipe) {
@@ -81,10 +87,10 @@ public class Manager extends Employe {
 
     @Override
     public Double getPrimeAnnuelle() {
-        Double primeDeBase = Entreprise.primeAnnuelleBase();
-        Double primeManager = this.equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
-        Double resultat = primeDeBase + primeManager;
-        return Entreprise.primeAnnuelleBase() + this.equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
+//        Double primeDeBase = Entreprise.primeAnnuelleBase();
+//        Double primeManager = this.equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
+//        Double resultat = primeDeBase + primeManager;
+//        return Entreprise.primeAnnuelleBase() + this.equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
+        return (Entreprise.primeAnnuelleBase() + equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN);
     }
-
 }

@@ -2,6 +2,8 @@ package com.ipiecoles.java.java220;
 
 import org.joda.time.LocalDate;
 
+import java.util.Objects;
+
 public class Technicien extends Employe implements Comparable<Technicien>{
     //Attributs
     private Integer grade;
@@ -40,6 +42,22 @@ public class Technicien extends Employe implements Comparable<Technicien>{
     @Override
     public Double getPrimeAnnuelle() {
         return Entreprise.primeAnnuelleBase() * (1+ this.grade * 0.1) + Entreprise.PRIME_ANCIENNETE * this.getNombreAnneeAnciennete();
+    }
+
+    //Correction
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.grade);
+    }
+
+    @Override
+    public String toString() {
+        return "Tehcnicien{" + "grade="  + this.grade + "}" +super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
     }
 
     @Override
